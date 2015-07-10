@@ -46,7 +46,12 @@ private
           response = http.head uri.request_uri
           authorization = DigestAuth.gen_auth_header uri, response['www-authenticate']
           response = http.get uri.request_uri, 'Authorization' => authorization
-          xml = response.body
+          case response
+          when Net::HTTPSuccess
+            xml = response.body
+          else
+            response.error!
+          end
         end
       end 
     end
