@@ -1,7 +1,7 @@
 class Votigoto::Show
   PROPS = {
      :string => %w(title episode_title description source_station program_id series_id),
-     :int => %w(source_size duration source_channel),
+     :int => %w(source_size duration source_channel episode_number),
      :custom => %w(capture_date content_url details_url in_progress) 
   }  
   def initialize(hpricot)
