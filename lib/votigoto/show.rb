@@ -2,7 +2,7 @@ class Votigoto::Show
   PROPS = {
      :string => %w(title episode_title description source_station program_id series_id),
      :int => %w(source_size duration source_channel episode_number),
-     :custom => %w(capture_date content_url details_url in_progress copy_protected high_definition) 
+     :custom => %w(capture_date content_url details_url in_progress copy_protected high_definition custom_icon) 
   }  
   def initialize(hpricot)
     PROPS[:string].each do |property|
@@ -21,6 +21,7 @@ class Votigoto::Show
     @in_progress = hpricot.at("details/inprogress").inner_text == "Yes" rescue false
     @copy_protected = hpricot.at("details/copyprotected").inner_text == "Yes" rescue false
     @high_definition = hpricot.at("details/highdefinition").inner_text == "Yes" rescue false
+    @custom_icon = hpricot.at("links/customicon/url").inner_text rescue nil
   end
   
   (PROPS[:string]+PROPS[:int]+PROPS[:custom]).each do |property|
