@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.email       = 'ianburrtell@gmail.com'
   s.files       = Dir['bin/*', 'lib/**/*', 'README.txt', 'License.txt']
   s.homepage    = 'https://rubygems.org/gems/votigoto'
+  s.add_runtime_dependency 'hpricot', '>= 0.5.145'
 end
